@@ -21,7 +21,7 @@ public class UserIT {
     public void createUser(){
         UserModel user = new UserModel();
         user.setName("teste");
-        user.setEmail("douglas.alves9905@gmail.com");
+        user.setEmail("teste@gmail.com");
         user.setCpf(geradorCpf.gerarCpf(true));
         user.setContact("37999995500");
 

@@ -26,7 +26,7 @@ public class UserServiceTest {
     public void createUser_ReturnUsers(){
         UserModel user = new UserModel();
         user.setName("teste");
-        user.setEmail("douglas.alves9905@gmail.com");
+        user.setEmail("teste@gmail.com");
         user.setCpf(geradorCpf.gerarCpf(true));
         user.setContact("37999995500");
         
@@ -44,7 +44,7 @@ public class UserServiceTest {
     public void createUser_ThrowsPersistenceException(){
         UserModel user = new UserModel();
         user.setName("teste");
-        user.setEmail("douglas.alves9905@gmail.com");
+        user.setEmail("teste@gmail.com");
         user.setCpf("40674766040");
         user.setContact("37999995500");
 
