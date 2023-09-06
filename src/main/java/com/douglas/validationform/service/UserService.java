@@ -43,11 +43,14 @@ public class UserService {
 
     public String deleteUser(String cpf){
         UserModel user = getUserCpf(cpf);
+
         String emailTemporario = user.getEmail();
         UserModel userTemporario = user;
         userRepository.deleteById(user.getId());
         sendEmailService.toSendDeleteUser(emailTemporario, Messages.createTitleDeleteUSer(userTemporario) , Messages.messageDeleteUser(userTemporario));
         return "Usuario deletado com sucesso";
+
+        
     }
 
     public Boolean cpfExists(String cpf){

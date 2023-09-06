@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,21 +20,25 @@ public class UserModel {
 
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+    @Schema(example = "Rodrigo Goes")
     @NotBlank(message = "Campo nome não pode ser vazio")
     @Column(nullable = false)
     String name;
 
+    @Schema(example = "Rodrigo@gmail.com")
     @Email(message = "E-mail não é válido")
     @Column(nullable = false)
     String email;
 
+    @Schema(example = "04727095009")
     @CPF(message = "CPF não é válido")
     @Column(nullable = false, unique = true)
     String cpf;
 
+    @Schema(example = "37999552626")
     @NotBlank(message = "Campo contato não pode ser vazio")
     @Column(nullable = false)
     String contact;
@@ -41,9 +46,14 @@ public class UserModel {
     @Column(nullable = false)
     LocalDateTime creation_date;
 
-    
-
-    
+    public UserModel(@NotBlank(message = "Campo nome não pode ser vazio") String name,
+            @Email(message = "E-mail não é válido") String email, @CPF(message = "CPF não é válido") String cpf,
+            @NotBlank(message = "Campo contato não pode ser vazio") String contact) {
+        this.name = name;
+        this.email = email;
+        this.cpf = cpf;
+        this.contact = contact;
+    }
 
     public UserModel() {
     }
